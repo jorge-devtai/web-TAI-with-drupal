@@ -1,7 +1,12 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+import { getDataPages } from '@libs/dataPages';
+
+const dataPages = await getDataPages();
 ---
 
 <BaseLayout title="Escuela de Artes Universitaria TAI">
 	<p>Bienvenido a la página principal de nuestro sitio web.</p>
+	
 </BaseLayout>
