@@ -1,12 +1,22 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-import { getDataPages } from '@libs/dataPages';
+import { getDataPages, getAllPagesBySlug } from '@libs/dataPages';
+const slugs = await getAllPagesBySlug();
+const slug = "/home";
+console.log("Slugs:", slugs);
 
-const dataPages = await getDataPages();
+const dataPage = await getDataPages();
+const homePage = dataPage.find((page: any) => page.slugPage === slug);
+
+
+const { titlePage,  processedContentPage } = homePage || { titlePage: "Página no encontrada", slugPage: "404" };
+
+
 ---
 
-<BaseLayout title="Escuela de Artes Universitaria TAI">
-	<p>Bienvenido a la página principal de nuestro sitio web.</p>
+<BaseLayout title={titlePage}>
+	<h1>{titlePage}</h1>
+	<p set:html={processedContentPage}/>
 	
 </BaseLayout>
