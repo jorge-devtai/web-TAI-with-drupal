@@ -1,0 +1,45 @@
+---
+// src/pages/forms/[slug].astro
+import FormLayout from '@layouts/FormLayout.astro';
+import DrupalForm from '@components/DrupalForm.astro';
+import { getDataForm } from '@libs/drupalService';
+
+// Generar paths estáticos
+export async function getStaticPaths() {
+  const forms = await getDataForm();
+  
+  if (!forms) {
+    return [];
+  }
+  
+  return forms.map((form:any) => ({
+    params: { 
+      slug: form.alias.replace(/^\//, '')
+    },
+    props: {
+      form,
+    }
+  }));
+}
+
+const { form } = Astro.props;
+// Si no se encuentra el formulario, mostrar 404
+if (!form) {
+  return Response.redirect('/404', 404);
+}
+
+
+---
+<FormLayout 
+  titleForm={ form.titleForm }
+  descriptionForm={ form.descriptionForm }
+  bannerUrl={ form.bannerUrl }
+  >
+
+   
+          <div class="p-4 p-md-5 mx-auto">
+            <DrupalForm form={form} />
+          </div>
+      
+
+</FormLayout>

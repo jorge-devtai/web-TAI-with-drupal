@@ -1,0 +1,204 @@
+---
+import FormLayout from "@layouts/FormLayout.astro";
+import { getDataForm } from "@/libs/apiForms";
+
+// 1) Traer datos
+const forms = await getDataForm();
+
+// 2) Asegurar que tenemos un formulario (puedes buscar por label si quieres)
+const form =
+  forms?.find((f: any) => f.titleForm === "solicita-informacion");
+
+if (!form) {
+  console.error("No hay formularios disponibles");
+}
+
+// 3) Obtener y parsear el schema (según qué devuelves en tu API)
+const raw = form?.descriptionForm ?? form?.descriptionRaw ?? "";
+let schema: any = form?.formSchema ?? null;
+
+if (!schema && typeof raw === "string" && raw) {
+  try { schema = JSON.parse(raw); } catch (e) { console.error("JSON inválido en description:", e); }
+}
+
+// 4) Tolerar ambas estructuras (raíz vs config)
+const validation = schema?.validation ?? schema?.config?.validation ?? [];
+const formFields = schema?.form ?? schema?.config?.form ?? [];
+
+// Mapeo de validaciones por campo (para atributos HTML)
+const rulesByField = new Map<string, any>();
+for (const v of validation) {
+  const curr = rulesByField.get(v.field) ?? {};
+  if (v.plugin === "minlength") curr.minlength = v.length;
+  if (v.plugin === "maxlength") curr.maxlength = v.length;
+  if (v.plugin === "regex") curr.pattern = v.pattern;
+  rulesByField.set(v.field, curr);
+}
+
+function labelFor(f: any) {
+  return f.label || f.placeholder || f.field || "";
+}
+---
+
+<FormLayout titleForm={form?.titleForm}>
+    <div class="max-w-3xl mx-auto p-4">
+      <section class="space-y-4">
+  
+
+        <form id={schema._id}  method="post" action="#">
+          {formFields.map((f: any) => {
+            const r = rulesByField.get(f.field) ?? {};
+            switch (f.type) {
+              case "texttype":
+                return (
+                  <div class="input-wrapper" id={`group-${f.field}`}>
+                    <label for={f.field}>
+                      {labelFor(f)}
+                    </label>
+                    <input
+                      id={f.field}
+                      name={f.field}
+                      type="text"
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      minlength={r.minlength}
+                      maxlength={r.maxlength}
+                      pattern={r.pattern}
+                      
+                    />
+                  </div>
+                );
+
+              case "emailtype":
+                return (
+                  <div class="input-wrapper" id={`group-${f.field}`}>
+                    <label for={f.field}>
+                      {labelFor(f)}
+                    </label>
+                    <input
+                      id={f.field}
+                      name={f.field}
+                      type="email"
+                      required={f.required}
+                      placeholder={f.placeholder}
+                      minlength={r.minlength}
+                      maxlength={r.maxlength}
+                      pattern={r.pattern}
+                      
+                    />
+                  </div>
+                );
+
+              case "phonetype":
+                return (
+                  <div class="input-wrapper" id={`group-${f.field}`}>
+                    <label for={f.field}>
+                      {labelFor(f) || "Teléfono"}
+                    </label>
+                    <input
+                      id={f.field}
+                      name={f.field}
+                      type="tel"
+                      required={f.required}
+                      placeholder={f.placeholder || "+34 600 000 000"}
+                      minlength={r.minlength}
+                      maxlength={r.maxlength}
+                      pattern={r.pattern}
+                      
+                    />
+                  </div>
+                );
+
+              case "countrytype":
+                return (
+                  <div class="input-wrapper" id={`group-${f.field}`}>
+                    <label for={f.field}>
+                      {labelFor(f) || "País"}
+                    </label>
+                    <input
+                      id={f.field}
+                      name={f.field}
+                      type="text"
+                      required={f.required}
+                      placeholder={f.placeholder || "País"}
+                      
+                    />
+                  </div>
+                );
+
+              case "commerciallisttype":
+                // TODO: construir selects dependientes a partir de schema.config.commercial_list.items
+                return (
+                  <div class="input-wrapper" id={`group-${f.field}`}>
+                    <label>Área de Interés</label>
+                    <select
+                        name={f.field}
+                        required={f.required}
+                        aria-label="Área de Interés"
+                    >
+                      <option value="">Selecciona...</option>
+                    </select>
+                  </div>
+                );
+
+              case "consenttype":
+                return (
+                  <div class="flex items-start gap-3" id={`group-${f.field}`}>
+                    <input
+                      id={f.field}
+                      name={f.field}
+                      type="checkbox"
+                      required={f.required}
+                      class="mt-1 h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
+                    />
+                    {/* f.description trae HTML, usamos set:html */}
+                    <label for={f.field} class="text-sm text-gray-700" set:html={f.description}></label>
+                  </div>
+                );
+
+              case "submittype":
+                return (
+                  <div >
+                    <button
+                      type="submit"
+                    >
+                      {f.submit_label || "Enviar"}
+                    </button>
+                  </div>
+                );
+
+              default:
+                return null;
+            }
+          })}
+        </form>
+      </section>
+    </div>
+</FormLayout>
+
+<style>
+    form {
+
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+
+        .input-wrapper {
+
+            >label { display: none;}
+
+            >input, select {
+                inline-size: 100%;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+            }
+        }
+
+        
+    }
+</style>

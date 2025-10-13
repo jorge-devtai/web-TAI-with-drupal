@@ -1,0 +1,42 @@
+---
+import FormLayout from "@/layouts/FormLayout.astro";
+import { getDataForm } from "@/libs/apiPagesForms";
+const [data] = await getDataForm();
+
+console.log("Data fetched FRONT for form:", data);
+
+const {titleForm, descriptionForm, bannerUrl, formUrl} = data;
+---
+
+<FormLayout 
+    titleForm={titleForm} 
+    descriptionForm={descriptionForm}
+    bannerUrl={bannerUrl}
+    formUrl={formUrl}
+>
+  <!-- <iframe 
+            src={formUrl} 
+            width="100%" 
+            height="800" 
+            style="border:none;"
+            title={titleForm}
+        ></iframe>
+ -->
+
+
+   <form method="POST" action={formUrl}>
+        <label>
+            Nombre:
+            <input type="text" name="field_name" required />
+        </label>
+        <label>
+            Email:
+            <input type="email" name="field_email" required />
+        </label>
+        <label>
+            Mensaje:
+            <textarea name="field_message"></textarea>
+        </label>
+        <button type="submit">Enviar</button>
+    </form>
+</FormLayout>

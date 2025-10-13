@@ -1,0 +1,48 @@
+---
+
+
+import FormFooter from "@/components/FormFooter.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import LogoTAI from "@assets/Logotipo-TAI.svg"
+import ImageForm from "@assets/images/image-form.webp"
+
+import "@styles/form-style.css";
+
+
+const {titleForm, descriptionForm, bannerUrl} = Astro.props;
+---
+
+<BaseLayout titlePage={titleForm}>
+    <div class="form-container">
+        <div class="form-container__wrapper">
+            <div class="form-container__wrapper--column-lft">
+                <header>
+                    <nav>
+                        <a href="/"
+                            ><figure>
+                                <img
+                                    src={LogoTAI.src}
+                                    alt="Logo TAI"
+                                    width="250"
+                                    height="100"
+                                    fetchpriority="high"
+                                />
+                            </figure></a
+                        >
+                    </nav>
+                    <div class="info-form"> 
+                        <h1>{titleForm}</h1>
+                        <p>{descriptionForm}</p>
+                    </div>
+                </header>
+                <main>
+                    <slot />
+                </main>
+            </div>
+            <aside class="form-container__wrapper--column-rgt">
+                <figure><img src={ImageForm.src} alt="" width="100" height="100"/></figure>
+            </aside>
+        </div>
+        <FormFooter />
+    </div>
+</BaseLayout>

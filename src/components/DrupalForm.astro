@@ -1,0 +1,220 @@
+---
+const { form } = Astro.props;
+import {getCombinedForms} from '@libs/drupalService';
+
+const { pageData, leadFormData } = getCombinedForms(form) || { pageData: null, leadFormData: null };
+
+// Helper para encontrar campos específicos
+const getField = (fieldName: string) => {
+  return leadFormData.form?.find((field: any) => field.field === fieldName);
+};
+
+const firstNameField = getField('first_name');
+const lastNameField = getField('last_name');
+const emailField = getField('email');
+const phoneField = getField('phone_number');
+const countryField = getField('country');
+const cityField = getField('city');
+const commercialListField = getField('commercial_list');
+const gdprField = getField('gdpr');
+
+---
+
+<div class="form-info">
+
+   <!-- Form -->
+  <form 
+    method="POST" 
+    action={`/api/submit-lead`}
+    class="needs-validation" 
+    novalidate
+    id="dynamic-lead-form"
+  >
+    <input type="hidden" name="af_id" value={leadFormData._id} />
+    <input type="hidden" name="form_type" value={leadFormData.config.type?.code || 'contact'} />
+    <input type="hidden" name="redirect_url" value={leadFormData.config.redirect} />
+
+    {
+      firstNameField && (
+        <div class="mb-3">
+          <label for="first_name" class="form-label">{firstNameField.label}{firstNameField.required ? '*' : ''}</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="first_name" 
+            name="first_name" 
+            placeholder={firstNameField.placeholder || ''}
+            required={firstNameField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+        </div>
+      )
+    }
+    
+    {
+      lastNameField && (
+        <div class="mb-3">
+          <label for="last_name" class="form-label">{lastNameField.label}{lastNameField.required ? '*' : ''}</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="last_name" 
+            name="last_name" 
+            placeholder={lastNameField.placeholder || ''}
+            required={lastNameField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
+        </div>
+      )
+    }
+    {
+      countryField && (
+        <div class="mb-3">
+          <label for="country" class="form-label">{countryField.label}{countryField.required ? '*' : ''}</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="country" 
+            name="country" 
+            placeholder={countryField.placeholder || ''}
+            required={countryField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa tu país.</div>
+        </div>
+      )
+    }
+
+    {
+      cityField && (
+        <div class="mb-3">
+          <label for="city" class="form-label">{cityField.label}{cityField.required ? '*' : ''}</label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="city" 
+            name="city" 
+            placeholder={cityField.placeholder || ''}
+            required={cityField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa tu ciudad.</div>
+        </div>
+      )
+    }
+
+    {
+      emailField && (
+        <div class="mb-3">
+          <label for="email" class="form-label">{emailField.label}{emailField.required ? '*' : ''}</label>
+          <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            name="email" 
+            placeholder={emailField.placeholder || ''}
+            required={emailField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+        </div>
+      )
+    }
+    {
+      phoneField && (
+        <div class="mb-3">
+          <label for="phone_number" class="form-label">{phoneField.label}{phoneField.required ? '*' : ''}</label>
+          <input 
+            type="tel" 
+            class="form-control" 
+            id="phone_number" 
+            name="phone_number" 
+            placeholder={phoneField.placeholder || ''}
+            required={phoneField.required || false}
+          />
+          <div class="invalid-feedback">Por favor, ingresa tu número de teléfono.</div>
+        </div>
+      )
+    }
+
+    {
+      commercialListField && (
+        <div class="mb-3 form-check">
+          <input 
+            type="checkbox" 
+            class="form-check-input" 
+            id="commercial_list" 
+            name="commercial_list" 
+            required={commercialListField.required || false}
+          />
+          <label class="form-check-label" for="commercial_list">
+            {commercialListField.label}{commercialListField.required ? '*' : ''}
+          </label>
+          <div class="invalid-feedback">Debes aceptar para continuar.</div>
+        </div>
+      )
+    }
+    {
+      gdprField && (
+        <div class="mb-3 form-check">
+          <input 
+            type="checkbox" 
+            class="form-check-input" 
+            id="gdpr" 
+            name="gdpr" 
+            required={gdprField.required || false}
+          />
+          <label class="form-check-label" for="gdpr">
+            {gdprField.label}{gdprField.required ? '*' : ''}
+          </label>             
+          <div class="invalid-feedback">Debes aceptar para continuar.</div>
+        </div>
+      )
+    }
+    
+    <button type="submit" class="btn btn-primary btn-lg w-100">
+        {leadFormData.form.find((f: any) => f.type === 'submittype')?.submit_label || 'Enviar solicitud'}
+      </button>
+   
+  </form>
+</div>
+
+<style>
+  .form-info {
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto;
+  }
+</style>
+
+<script>
+// Script para manejar el envío del formulario
+document.getElementById('dynamic-lead-form')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(e.target as HTMLFormElement);
+  const data = Object.fromEntries(formData);
+  
+  try {
+    const response = await fetch('/api/submit-lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    if (response.ok) {
+      const result = await response.json();
+      // Redirigir a la página de confirmación
+      if (data.redirect_url) {
+        window.location.href = data.redirect_url;
+      } else {
+        window.location.href = '/gracias';
+      }
+    } else {
+      alert('Error al enviar el formulario. Por favor, intenta nuevamente.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error de conexión. Por favor, intenta nuevamente.');
+  }
+});
+</script>

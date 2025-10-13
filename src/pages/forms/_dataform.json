@@ -1,0 +1,687 @@
+{
+  "_id": "9081453f-8232-45b7-b2c1-a29d02a63640",
+  "label": "solicita-informacion",
+  "version": 22,
+  "config": {
+    "languages": ["SPA"],
+    "default_language": "SPA",
+    "path": "/solicita-informacion",
+    "domain": "drupaldev.taiarts.com",
+    "capture_channel": {
+      "code": "CORE_PKL_Web_form",
+      "label": "Lead form"
+    },
+    "type": {
+      "code": "CORE_PKL_Contact",
+      "label": "Contact"
+    },
+    "area": {
+      "code": "CORE_PKL_Page",
+      "label": "Page"
+    },
+    "freefield": null,
+    "origin": "drupaldev.taiarts.com::contact::page::::",
+    "redirect": "/solicita-informacion-confirm",
+    "commercial_list": {
+      "items": [
+        {
+          "id": "0ecc5945-01f3-4b58-93ed-29a583d5d750",
+          "parent_id": null,
+          "type": "FIRST_LEVEL_LABEL_ITEM",
+          "salesforce_id": null,
+          "placeholder": "Enter your primary level entry...",
+          "value": "Área de Interés",
+          "business_unit_salesforce_id": null,
+          "commercial_catalog": [],
+          "study_mode": null
+        },
+        {
+          "id": "147a6fa3-2b47-4bf4-a6a3-2bc0d1fbad5a",
+          "parent_id": "0ecc5945-01f3-4b58-93ed-29a583d5d750",
+          "type": "STUDY_AREA_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Arte_Digital_ExternalID",
+          "placeholder": "Arte Digital - TAIPresencial_Arte_Digital_ExternalID",
+          "value": "Arte Digital",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Arte_Digital_ExternalID",
+              "name": "Arte Digital"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "03bbb0c2-af08-4ad8-96ca-8cb07b1c0e20",
+          "parent_id": "0ecc5945-01f3-4b58-93ed-29a583d5d750",
+          "type": "STUDY_AREA_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+          "placeholder": "Artes Escenicas - TAIPresencial_Artes_Escenicas_ExternalID",
+          "value": "Artes Escenicas",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "c0aa93ed-4794-4eeb-891d-997d0d5d6dfb",
+          "parent_id": "3c1d83a9-4fee-42cc-9df6-fa156fc9b2ac",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Arte_Digital_Diplomatura_en_Diseño,_Animación_y_Arte_Digital_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Arte_Digital_Diplomatura_en_Diseño,_Animación_y_Arte_Digital_Year1_Fall2026-2027_ExternalID",
+          "value": "Diploma en Diseño, Animación y Arte Digital",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Diplomatura_en_Diseño,_Animación_y_Arte_Digital_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Diplomatura_en_Diseño,_Animación_y_Arte_Digital_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Diplomatura_en_Diseño,_Animación_y_Arte_Digital_ExternalID",
+              "name": "Diplomatura en Diseño, Animación y Arte Digital"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Arte_Digital_ExternalID",
+              "name": "Arte Digital"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "d7d4575a-b3b1-4bd6-9e14-ce5340718398",
+          "parent_id": "3c1d83a9-4fee-42cc-9df6-fa156fc9b2ac",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Arte_Digital_Máster_Universitario_en_Creación_de_Animación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Arte_Digital_Máster_Universitario_en_Creación_de_Animación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "value": "Máster Universitario en Creación de Animación Audiovisual",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Máster_Universitario_en_Creación_de_Animación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Máster_Universitario_en_Creación_de_Animación_Audiovisual_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Arte_Digital_Máster_Universitario_en_Creación_de_Animación_Audiovisual_ExternalID",
+              "name": "Máster Universitario en Creación de Animación Audiovisual"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Arte_Digital_ExternalID",
+              "name": "Arte Digital"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "3c1d83a9-4fee-42cc-9df6-fa156fc9b2ac",
+          "parent_id": "147a6fa3-2b47-4bf4-a6a3-2bc0d1fbad5a",
+          "type": "LEVEL_LABEL_ITEM",
+          "salesforce_id": null,
+          "placeholder": "Enter a level label",
+          "value": "Selecciona una Titulación",
+          "business_unit_salesforce_id": null,
+          "commercial_catalog": [],
+          "study_mode": null
+        },
+        {
+          "id": "efc99ad6-0f6d-45d9-816d-3e3581e1b4c7",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Grado_en_Artes_Escénicas_e_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Grado_en_Artes_Escénicas_e_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "value": "Grado en Artes Escénicas e Interpretación Audiovisual",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Grado_en_Artes_Escénicas_e_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Grado_en_Artes_Escénicas_e_Interpretación_Audiovisual_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Grado_en_Artes_Escénicas_e_Interpretación_Audiovisual_ExternalID",
+              "name": "Grado en Artes Escénicas e Interpretación Audiovisual"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "5d6d9eb1-d95b-4e53-a6e8-360739c8d6fa",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Bachelor_in_Performing_Arts_and_Screen_Acting_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Bachelor_in_Performing_Arts_and_Screen_Acting_Year1_Fall2026-2027_ExternalID",
+          "value": "Bachelor's Degree in Performing Arts and Screen Acting",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Bachelor_in_Performing_Arts_and_Screen_Acting_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Bachelor_in_Performing_Arts_and_Screen_Acting_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Bachelor_in_Performing_Arts_and_Screen_Acting_ExternalID",
+              "name": "Bachelor in Performing Arts and Screen Acting"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "a51febb6-a94b-404b-899f-ad9f94dc9b6d",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Interpretación_Audiovisual_y_Escénica_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Diplomatura_en_Interpretación_Audiovisual_y_Escénica_Year1_Fall2026-2027_ExternalID",
+          "value": "Diploma en Interpretación Audiovisual y Escénica",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Interpretación_Audiovisual_y_Escénica_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Interpretación_Audiovisual_y_Escénica_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Interpretación_Audiovisual_y_Escénica_ExternalID",
+              "name": "Diplomatura en Interpretación Audiovisual y Escénica"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "04baa11b-3ae9-490d-b936-c4c996512cd7",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Diplomatura_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+          "value": "Diploma en Teatro Musical",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Teatro_Musical_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Diplomatura_en_Teatro_Musical_ExternalID",
+              "name": "Diplomatura en Teatro Musical"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "73cf60ba-8c2a-41ea-bcfb-5c7b1c95e081",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_Universitario_en_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Máster_Universitario_en_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+          "value": "Máster Universitario en Interpretación Audiovisual",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_Universitario_en_Interpretación_Audiovisual_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_Universitario_en_Interpretación_Audiovisual_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_Universitario_en_Interpretación_Audiovisual_ExternalID",
+              "name": "Máster Universitario en Interpretación Audiovisual"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "f385ce49-8431-46f2-946e-6eb96300ade9",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Interpretación_para_Cine_y_Televisión_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Máster_en_Interpretación_para_Cine_y_Televisión_Year1_Fall2026-2027_ExternalID",
+          "value": "Máster en Interpretación para Cine y Televisión",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Interpretación_para_Cine_y_Televisión_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Interpretación_para_Cine_y_Televisión_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Interpretación_para_Cine_y_Televisión_ExternalID",
+              "name": "Máster en Interpretación para Cine y Televisión"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "2a5b25a8-12f4-4868-8aa4-6c5f4779d8ad",
+          "parent_id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "type": "INTAKE_ITEM_LABEL",
+          "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+          "placeholder": "Fall 2026-2027 - TAIPresencial_Artes_Escenicas_Máster_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+          "value": "Máster en Teatro Musical",
+          "business_unit_salesforce_id": "TAIPresencial_ExternalID",
+          "commercial_catalog": [
+            {
+              "type": "INTAKE",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Teatro_Musical_Year1_Fall2026-2027_ExternalID",
+              "name": "Fall 2026-2027"
+            },
+            {
+              "type": "LEVEL",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Teatro_Musical_Year1_ExternalID",
+              "name": "Year 1"
+            },
+            {
+              "type": "CURRICULUM",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_Máster_en_Teatro_Musical_ExternalID",
+              "name": "Máster en Teatro Musical"
+            },
+            {
+              "type": "STUDY_AREA",
+              "salesforce_id": "TAIPresencial_Artes_Escenicas_ExternalID",
+              "name": "Artes Escenicas"
+            },
+            {
+              "type": "BUSINESS_UNIT",
+              "salesforce_id": "TAIPresencial_ExternalID",
+              "name": "TAI Presencial"
+            },
+            {
+              "type": "DIVISION",
+              "salesforce_id": "TAI_ExternalID",
+              "name": "TAI"
+            }
+          ],
+          "study_mode": null
+        },
+        {
+          "id": "4a5c02ff-cdea-436f-8e47-5adcf9e83ef4",
+          "parent_id": "03bbb0c2-af08-4ad8-96ca-8cb07b1c0e20",
+          "type": "LEVEL_LABEL_ITEM",
+          "salesforce_id": null,
+          "placeholder": "Enter a level label",
+          "value": "Selecciona una Titulación",
+          "business_unit_salesforce_id": null,
+          "commercial_catalog": [],
+          "study_mode": null
+        }
+      ]
+    },
+    "validation": [
+      {
+        "length": 2,
+        "plugin": "minlength",
+        "field": "first_name",
+        "error_message": "Cette chaîne est trop courte. Elle doit avoir au minimum 2 caractères."
+      },
+      {
+        "length": 2,
+        "plugin": "minlength",
+        "field": "last_name",
+        "error_message": "Cette chaîne est trop courte. Elle doit avoir au minimum 2 caractères."
+      },
+      {
+        "length": 20,
+        "plugin": "maxlength",
+        "field": "phone_number",
+        "error_message": "Cette chaîne est trop longue. Elle doit avoir au maximum 20 caractères."
+      },
+      {
+        "pattern": "^\\+",
+        "plugin": "regex",
+        "field": "phone_number",
+        "error_message": "Cette valeur n'est pas valide."
+      },
+      {
+        "length": 2,
+        "plugin": "minlength",
+        "field": "email",
+        "error_message": "Cette chaîne est trop courte. Elle doit avoir au minimum 2 caractères."
+      }
+    ],
+    "confirmation_page": [
+      {
+        "message": "Confirmación",
+        "plugin": "title"
+      },
+      {
+        "message": "Confirmación de envío",
+        "plugin": "message"
+      }
+    ],
+    "form": [
+      {
+        "type": "texttype",
+        "crm_field": "CORE_PA_FirstName__c",
+        "field": "first_name",
+        "label": "",
+        "description": "",
+        "placeholder": "Nombre",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "texttype",
+        "crm_field": "CORE_PA_LastName__c",
+        "field": "last_name",
+        "label": "",
+        "description": "",
+        "placeholder": "Apellidos",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "countrytype",
+        "crm_field": "CORE_PA_MailingCountryCode__c",
+        "field": "country",
+        "label": "",
+        "description": "",
+        "placeholder": "País",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "texttype",
+        "crm_field": "CORE_PA_MailingCity__c",
+        "field": "city",
+        "label": "",
+        "description": "",
+        "placeholder": "Su ciudad",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "phonetype",
+        "crm_field": "CORE_PA_Mobile__c",
+        "field": "phone_number",
+        "label": "",
+        "description": "",
+        "placeholder": "",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "emailtype",
+        "crm_field": "CORE_PA_Email__c",
+        "field": "email",
+        "label": "",
+        "description": "",
+        "placeholder": "Email",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "commerciallisttype",
+        "crm_field": "commercial_list",
+        "field": "commercial_list",
+        "label": "",
+        "description": "",
+        "placeholder": "",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "consents": [
+          {
+            "consent_id": "01",
+            "consent_type": "CORE_PKL_Processing_Collection_Storage_of_data_consent",
+            "consent_channel": "CORE_PKL_Not_applicable",
+            "consent_description": "Description"
+          },
+          {
+            "consent_id": "02",
+            "consent_type": "CORE_PKL_Authorisation_to_be_contacted_by_channel",
+            "consent_channel": "CORE_PKL_All",
+            "consent_description": "Description"
+          },
+          {
+            "consent_id": "03",
+            "consent_type": "CORE_PKL_Authorisation_to_be_contacted_by_channel_marketing",
+            "consent_channel": "CORE_PKL_All",
+            "consent_description": "Description"
+          }
+        ],
+        "type": "consenttype",
+        "crm_field": "CORE_CS_CampaignId__r\\:CORE_External_Id__c",
+        "field": "gdpr",
+        "label": "",
+        "description": "Acepto la <a href=\"#\"><u>Política de privacidad</u></a>&nbsp;",
+        "placeholder": "",
+        "required": true,
+        "parent": null,
+        "conditions": [],
+        "conditionValues": [],
+        "canHaveConditions": false,
+        "group_id": null
+      },
+      {
+        "type": "submittype",
+        "field": "submit",
+        "submit_label": "¡Infórmate!"
+      }
+    ],
+    "attachment": [],
+    "language_suffix": "",
+    "information": "Formulario Solicita información"
+  },
+  "processing": [
+    {
+      "plugin": "salesforce"
+    }
+  ],
+  "booking": null,
+  "client_version": "3.4.1",
+  "lead_form_type": "LeadForm"
+}
