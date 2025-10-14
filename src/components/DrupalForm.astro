@@ -1,5 +1,4 @@
 ---
-// src/components/form/FormRenderer.astro
 import InputText from "./form/InputText.astro";
 import InputEmail from "./form/InputEmail.astro";
 import InputPhone from "./form/InputPhone.astro";
@@ -8,11 +7,10 @@ import SelectCommercialList from "./form/SelectCommercialList.astro";
 import CheckboxConsent from "./form/Checkbox.astro";
 import SubmitButton from "./form/SubmitButton.astro";
 
-
 const { formData } = Astro.props;
 const { formElements = [], validation = [], items = [] } = formData;
 
-// función para obtener reglas de validación de cada campo
+// Función para obtener reglas de validación de cada campo
 function getFieldValidations(field: string) {
   return validation.filter((v: any) => v.field === field);
 }
@@ -42,10 +40,13 @@ function getFieldValidations(field: string) {
     }
   })}
 </form>
+
 <script type="module">
   const form = document.getElementById("dynamic-form");
+  const formElements = /** @type {any[]} */ (window.formData?.formElements || []);
+  const validationRules = /** @type {any[]} */ (window.formData?.validation || []);
 
-  // Función para aplicar validaciones simples
+  // Función de validación por campo
   function validateField(value, rules) {
     for (const rule of rules) {
       if (rule.plugin === "minlength" && value.length < rule.length) {
@@ -61,17 +62,33 @@ function getFieldValidations(field: string) {
     return null;
   }
 
+  // Extraer valor según tipo de campo
+  function extractFieldValue(el, data) {
+    let value = data[el.field] ?? "";
+
+    if (el.type === "commerciallisttype" && Array.isArray(value)) {
+      return value.map(item => item.value || item).join(",");
+    }
+
+    if (el.type === "consenttype") {
+      return !!value;
+    }
+
+    return value;
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    const formDataRaw = new FormData(form);
+    const data = Object.fromEntries(formDataRaw);
 
-    // Validaciones dinámicas
+    // === Validaciones ===
     const errors = [];
     for (const el of formElements) {
+      if (!el.field) continue;
       const value = data[el.field] ?? "";
-      const rules = validation.filter((v) => v.field === el.field);
+      const rules = validationRules.filter(v => v.field === el.field);
       const error = validateField(value, rules);
       if (error) errors.push({ field: el.field, message: error });
     }
@@ -82,19 +99,19 @@ function getFieldValidations(field: string) {
       return;
     }
 
-    // Mapear a crm_field
-    const payload = {};
-    for (const el of formElements) {
+    // === Mapeo a crm_field ===
+    const payload = formElements.reduce((acc, el) => {
       if (el.crm_field) {
-        payload[el.crm_field] = data[el.field];
+        acc[el.crm_field] = extractFieldValue(el, data);
       }
-    }
+      return acc;
+    }, {});
 
     console.log("Payload a enviar:", payload);
 
+    // === Envío ===
     try {
-      // Endpoint simulado para test, cambia al endpoint real de Drupal cuando lo tengas
-      const response = await fetch("http://drupaldev.taiarts.com/admin/gge-af-connector/submission", {
+      const response = await fetch("http://drupaldev.taiarts.com/api/gge-af-connector/submission", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
