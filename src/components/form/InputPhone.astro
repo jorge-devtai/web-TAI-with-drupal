@@ -1,0 +1,15 @@
+---
+const { field, validations = [] } = Astro.props;
+---
+
+<div class="form-group">
+  <label for={field.field}>Teléfono</label>
+  <input
+    type="tel"
+    id={field.field}
+    name={field.field}
+    required={field.required}
+    data-validation={JSON.stringify(validations)} 
+    class="border p-2 rounded w-full"
+  />
+</div>

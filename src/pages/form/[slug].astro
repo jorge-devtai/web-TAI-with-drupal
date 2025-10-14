@@ -1,0 +1,38 @@
+---
+// src/pages/forms/[slug].astro
+import FormLayout from '@layouts/FormLayout.astro';
+import DrupalForm from '@components/DrupalForm.astro';
+import { getDataForm, getAllForms } from '@libs/apiForms.ts';
+
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect('/404');
+
+// Generar paths estáticos
+export async function getStaticPaths() {
+  const slugs = await getAllForms();
+ // console.log("Forms for static paths:", slugs);
+  
+  return slugs.map((slug: any) => ({ 
+    params: { slug: slug.path } 
+  }));
+}
+
+const form = await getDataForm(slug);
+//console.log("Form data from FRONT:", form);
+if (!form) return Astro.redirect('/404');
+
+//console.log("Rendering form page for slug:", form?.titleForm);
+
+
+---
+<FormLayout 
+  titleForm={ form?.titleForm || "Formulario TAI" }
+  descriptionForm={ form?.subtitleForm || "Por favor, rellena el formulario" }
+
+  >
+    <DrupalForm formData={form} /> 
+ 
+      
+
+</FormLayout>

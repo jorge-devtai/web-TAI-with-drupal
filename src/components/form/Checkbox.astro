@@ -1,0 +1,8 @@
+---
+const { field } = Astro.props;
+---
+
+<div class="form-group flex items-center gap-2">
+  <input type="checkbox" id={field.field} name={field.field} required={field.required} />
+  <label for={field.field} set:html={field.description}></label>
+</div>

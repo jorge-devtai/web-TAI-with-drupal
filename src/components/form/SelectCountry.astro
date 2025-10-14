@@ -1,0 +1,12 @@
+---
+const { field } = Astro.props;
+const countries = ["España", "México", "Argentina", "Colombia"];
+---
+
+<div class="form-group">
+  <label for={field.field}>{field.placeholder}</label>
+  <select id={field.field} name={field.field} required={field.required} class="border p-2 rounded w-full">
+    <option value="">Selecciona un país</option>
+    {countries.map(c => <option value={c}>{c}</option>)}
+  </select>
+</div>

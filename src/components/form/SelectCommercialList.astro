@@ -1,0 +1,17 @@
+---
+const { field, items = [] } = Astro.props;
+
+// Filtramos jerarquía (Área → Titulación → Intake)
+const root = items.filter((i:any) => i.type === "FIRST_LEVEL_LABEL_ITEM")[0];
+const studyAreas = items.filter((i: any) => i.parent_id === root.id);
+---
+
+<div class="form-group">
+  <label for={field.field}>Área de interés</label>
+  <select id={field.field} name={field.field} required={field.required} class="border p-2 rounded w-full">
+    <option value="">Selecciona un área</option>
+    {studyAreas.map((a: any) => (
+      <option value={a.value}>{a.value}</option>
+    ))}
+  </select>
+</div>

@@ -1,0 +1,17 @@
+---
+const { field, validations = [] } = Astro.props;
+const errorMessages = validations.map((v: any) => v.error_message);
+---
+
+<div class="form-group">
+  <label for={field.field}>{field.placeholder}</label>
+  <input
+    type="text"
+    id={field.field}
+    name={field.field}
+    placeholder={field.placeholder}
+    required={field.required}
+    data-validation={JSON.stringify(validations)} 
+    class="border p-2 rounded w-full"
+  />
+</div>
